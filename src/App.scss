@@ -1,0 +1,43 @@
+.App {
+  text-align: center;
+}
+
+img {
+  margin-top: 2rem;
+  border-radius: 1rem;
+  max-width: 12rem;
+}
+
+section {
+  display: flex;
+  .column {
+    width: 50%;
+    p {
+      padding: 0 1rem;
+      width: 25rem;
+      margin: auto;
+    }
+    input {
+      display: block;
+      margin: auto auto 1rem;
+    }
+  }
+}
+
+footer {
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  img { display: none; }
+  section {
+    display: block;
+    .column {
+      width: 100%;
+    }
+  }
+}

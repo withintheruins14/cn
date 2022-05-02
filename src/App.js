@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import './App.scss';
+import chuck from './chuck.jpg';
 
 function App() {
+  const [fact, setFact] = useState();
+
+  useEffect(() => {
+    fetch('https://api.chucknorris.io/jokes/random')
+      .then((f) => f.json())
+      .then((f) => {
+        const fact = f.value;
+        setFact(fact);
+      });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img src={chuck} alt="chuck norris" />
+      <h1>chuck norris</h1>
+      <span>random facts</span>
+      <section>
+        <div className="column">
+          <h3>did you know?</h3>
+          {fact && (<p>{fact}</p>)}
+        </div>
+        <div className="column">
+          <h3>search for facts</h3>
+          <form>
+            <input />
+            <button type="submit">
+              search
+            </button>
+          </form>
+        </div>
+      </section>
+      <footer>
+        <span id="credit">
+          built with https://api.chucknorris.io/
+        </span>
+      </footer>
     </div>
   );
 }
